@@ -6,4 +6,4 @@
     "use strict";
     
 
-})(jQuery, window, document, aiwriters);
+})(jQuery, window, document, facebook);
