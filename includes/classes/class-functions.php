@@ -5,15 +5,15 @@
 
 defined( 'ABSPATH' ) || exit;
 
-if ( ! class_exists( 'AIWRITERS_Functions' ) ) {
-	class AIWRITERS_Functions {
+if ( ! class_exists( 'FACEBOOK_Functions' ) ) {
+	class FACEBOOK_Functions {
 		/**
-		 * @var AIWRITERS_Shortcodes|null
+		 * @var FACEBOOK_Shortcodes|null
 		 */
 		public $shortcodes = null;
 	}
 }
 
-global $aiwriters;
+global $facebook;
 
-$aiwriters = new AIWRITERS_Functions();
+$facebook = new FACEBOOK_Functions();

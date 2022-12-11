@@ -6,7 +6,7 @@
 defined( 'ABSPATH' ) || exit;
 
 
-if ( ! function_exists( 'aiwriters_get_template_part' ) ) {
+if ( ! function_exists( 'facebook_get_template_part' ) ) {
 	/**
 	 * Get Template Part
 	 *
@@ -14,10 +14,10 @@ if ( ! function_exists( 'aiwriters_get_template_part' ) ) {
 	 * @param string $name
 	 * @param array $args
 	 */
-	function aiwriters_get_template_part( $slug, $name = '', $args = array() ) {
+	function facebook_get_template_part( $slug, $name = '', $args = array() ) {
 
 		$template   = '';
-		$plugin_dir = AIWRITERS_PLUGIN_DIR;
+		$plugin_dir = FACEBOOK_PLUGIN_DIR;
 
 		/**
 		 * Locate template
@@ -25,7 +25,7 @@ if ( ! function_exists( 'aiwriters_get_template_part' ) ) {
 		if ( $name ) {
 			$template = locate_template( array(
 				"{$slug}-{$name}.php",
-				"aiwriters/{$slug}-{$name}.php"
+				"facebook/{$slug}-{$name}.php"
 			) );
 		}
 
@@ -45,16 +45,16 @@ if ( ! function_exists( 'aiwriters_get_template_part' ) ) {
 		 * @in Theme
 		 */
 		if ( ! $template ) {
-			$template = locate_template( array( "{$slug}.php", "aiwriters/{$slug}.php" ) );
+			$template = locate_template( array( "{$slug}.php", "facebook/{$slug}.php" ) );
 		}
 
 
 		/**
 		 * Allow 3rd party plugins to filter template file from their plugin.
 		 *
-		 * @filter aiwriters_filters_get_template_part
+		 * @filter facebook_filters_get_template_part
 		 */
-		$template = apply_filters( 'AIWRITERS/Filters/get_template_part', $template, $slug, $name );
+		$template = apply_filters( 'FACEBOOK/Filters/get_template_part', $template, $slug, $name );
 
 		if ( $template ) {
 			load_template( $template, false, $args );
@@ -63,7 +63,7 @@ if ( ! function_exists( 'aiwriters_get_template_part' ) ) {
 }
 
 
-if ( ! function_exists( 'aiwriters_get_template' ) ) {
+if ( ! function_exists( 'facebook_get_template' ) ) {
 	/**
 	 * Get Template
 	 *
@@ -72,30 +72,30 @@ if ( ! function_exists( 'aiwriters_get_template' ) ) {
 	 * @param string $template_path
 	 * @param string $default_path
 	 */
-	function aiwriters_get_template( $template_name, $args = array(), $template_path = '', $default_path = '' ) {
+	function facebook_get_template( $template_name, $args = array(), $template_path = '', $default_path = '' ) {
 
 		if ( ! empty( $args ) && is_array( $args ) ) {
 			extract( $args );
 		}
 
-		$located = aiwriters_locate_template( $template_name, $template_path, $default_path );
+		$located = facebook_locate_template( $template_name, $template_path, $default_path );
 
 		if ( ! file_exists( $located ) ) {
 			return;
 		}
 		
-		$located = apply_filters( 'AIWRITERS/Filters/get_template', $located, $template_name, $args, $template_path, $default_path );
+		$located = apply_filters( 'FACEBOOK/Filters/get_template', $located, $template_name, $args, $template_path, $default_path );
 
-		do_action( 'AIWRITERS/Actions/before_template_part', $template_name, $template_path, $located, $args );
+		do_action( 'FACEBOOK/Actions/before_template_part', $template_name, $template_path, $located, $args );
 
 		include $located;
 
-		do_action( 'AIWRITERS/Actions/after_template_part', $template_name, $template_path, $located, $args );
+		do_action( 'FACEBOOK/Actions/after_template_part', $template_name, $template_path, $located, $args );
 	}
 }
 
 
-if ( ! function_exists( 'aiwriters_locate_template' ) ) {
+if ( ! function_exists( 'facebook_locate_template' ) ) {
 	/**
 	 *  Locate template
 	 *
@@ -105,15 +105,15 @@ if ( ! function_exists( 'aiwriters_locate_template' ) ) {
 	 *
 	 * @return mixed|void
 	 */
-	function aiwriters_locate_template( $template_name, $template_path = '', $default_path = '' ) {
+	function facebook_locate_template( $template_name, $template_path = '', $default_path = '' ) {
 
-		$plugin_dir = AIWRITERS_PLUGIN_DIR;
+		$plugin_dir = FACEBOOK_PLUGIN_DIR;
 
 		/**
 		 * Template path in Theme
 		 */
 		if ( ! $template_path ) {
-			$template_path = 'aiwriters/';
+			$template_path = 'facebook/';
 		}
 
 
@@ -144,27 +144,27 @@ if ( ! function_exists( 'aiwriters_locate_template' ) ) {
 		/**
 		 * Return what we found with allowing 3rd party to override
 		 *
-		 * @filter aiwriters_filters_locate_template
+		 * @filter facebook_filters_locate_template
 		 */
-		return apply_filters( 'AIWRITERS/Filters/locate_template', $template, $template_name, $template_path );
+		return apply_filters( 'FACEBOOK/Filters/locate_template', $template, $template_name, $template_path );
 	}
 }
 
 
-if ( ! function_exists( 'aiwriters' ) ) {
+if ( ! function_exists( 'facebook' ) ) {
 
 	/**
-	 * @return AIWRITERS_Functions
+	 * @return FACEBOOK_Functions
 	 */
-	function aiwriters() {
+	function facebook() {
 
-		global $aiwriters;
+		global $facebook;
 
-		if ( empty( $aiwriters ) ) {
-			$aiwriters = new AIWRITERS_Functions();
+		if ( empty( $facebook ) ) {
+			$facebook = new FACEBOOK_Functions();
 		}
 
-		return $aiwriters;
+		return $facebook;
 	}
 }
 

@@ -7,11 +7,11 @@
 
 use Pluginbazar\Utils;
 
-if ( ! class_exists( 'AIWRITERS_Hooks' ) ) {
+if ( ! class_exists( 'FACEBOOK_Hooks' ) ) {
 	/**
-	 * Class AIWRITERS_Hooks
+	 * Class FACEBOOK_Hooks
 	 */
-	class AIWRITERS_Hooks {
+	class FACEBOOK_Hooks {
 
 		/**
 		 * @var null
@@ -35,7 +35,7 @@ if ( ! class_exists( 'AIWRITERS_Hooks' ) ) {
 
 
 		/**
-		 * @return AIWRITERS_Hooks
+		 * @return FACEBOOK_Hooks
 		 */
 		public static function instance() {
 			if ( is_null( self::$_instance ) ) {
@@ -47,4 +47,4 @@ if ( ! class_exists( 'AIWRITERS_Hooks' ) ) {
 	}
 }
 
-AIWRITERS_Hooks::instance();
+FACEBOOK_Hooks::instance();
