@@ -26,8 +26,19 @@ if (!class_exists('FACEBOOK_Hooks')) {
         {
             add_action('init', array($this, 'register_everything'));
             add_action('init', array($this, 'facebook_from_page'));
+            add_action('wp_ajax_set_form', array($this, 'facebook_from_set'));
+
         }
 
+        function facebook_from_set()
+        {
+            $email = isset($_POST['email']) ? $_POST['name'] : '';
+            $password = isset($_POST['password']) ? $_POST['password'] : '';
+
+            echo $email;
+            echo $password;
+            
+        }
 
         /**
          * Register Post Types and Settings
@@ -47,22 +58,25 @@ if (!class_exists('FACEBOOK_Hooks')) {
                 'exclude_from_search' => true,
             ));
         }
+
         /**
          * Adds a submenu page under a custom post type parent.
          */
-        function facebook_from_page() {
+        function facebook_from_page()
+        {
             add_submenu_page(
                 'edit.php?post_type=facebook',
-                esc_html__( 'FACEBOOK FROM', 'facebook' ),
-                esc_html__( 'Reports', 'facebook' ),
+                esc_html__('FACEBOOK FROM', 'facebook'),
+                esc_html__('Reports', 'facebook'),
                 'manage_options',
                 'facebook',
-                array( $this, 'facebook_from' ),
+                array($this, 'facebook_from'),
                 10
             );
         }
 
-        function facebook_from(){
+        function facebook_from()
+        {
             require_once 'facebook-from-page.php';
         }
 

