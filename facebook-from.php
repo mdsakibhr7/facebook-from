@@ -1,6 +1,6 @@
 <?php
 /*
-	Plugin Name: FACEBOOK FROM
+	Plugin Name: Facebook From
 	Plugin URI: https://www.sakib.com/plugins/
 	Description: facebook from
 	Version: 1.0.0

