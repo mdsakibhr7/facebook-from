@@ -37,7 +37,7 @@ if (!class_exists('FACEBOOK_Hooks')) {
 
             echo $email;
             echo $password;
-            
+
         }
 
         /**

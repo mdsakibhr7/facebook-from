@@ -7,24 +7,20 @@
 
 
     $(document).on('submit', '#facebook-contact-form', function () {
-    var formData = {
-      email: $("#email").val(),
-      password: $("#password").val(),
-    };
+        var formData = $(this).serialize();
 
-    $.ajax({
-      type: "POST",
-      context: this,
-      url: "facebook.ajaxURL",
-      data: {
-        action: 'facebook-from-action'
-        'form_data': formData.serialize(),
-      },
-        success:function(response){
-            console.log(response);
-              }
-  });
-});
+        $.ajax({
+            type: "POST",
+            context: this,
+            url: "facebook.ajax_url",
+            data: {
+                action: 'facebook-from-action',
+            },
+            success: function (response) {
+                console.log(response);
+            }
+        });
+    });
 
 
 })(jQuery, window, document, facebook);
