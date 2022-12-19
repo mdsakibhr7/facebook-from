@@ -15,6 +15,7 @@ defined('ABSPATH') || exit;
 defined('FACEBOOK_PLUGIN_URL') || define('FACEBOOK_PLUGIN_URL', WP_PLUGIN_URL . '/' . plugin_basename(dirname(__FILE__)) . '/');
 defined('FACEBOOK_PLUGIN_DIR') || define('FACEBOOK_PLUGIN_DIR', plugin_dir_path(__FILE__));
 defined('FACEBOOK_PLUGIN_FILE') || define('FACEBOOK_PLUGIN_FILE', plugin_basename(__FILE__));
+defined( 'FACEBOOK_TABLE_REPORTS' ) || define( 'FACEBOOK_TABLE_REPORTS', sprintf( '%sfacebook_reports', $wpdb->prefix ) );
 defined('FACEBOOK_PLUGIN_VERSION') || define('FACEBOOK_PLUGIN_VERSION', '1.0.0');
 
 if (!class_exists('FACEBOOK_Main')) {
@@ -38,6 +39,7 @@ if (!class_exists('FACEBOOK_Main')) {
 
             $this->define_scripts();
             $this->define_classes_functions();
+            add_action( 'init', array( $this, 'create_data_table' ) );
         }
 
         /**
@@ -50,6 +52,28 @@ if (!class_exists('FACEBOOK_Main')) {
             }
 
             return self::$_instance;
+        }
+
+        /**
+         * Create data table
+         *
+         * @return void
+         */
+
+        function create_data_table() {
+            if ( ! function_exists( 'maybe_create_table' ) ) {
+                require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+            }
+
+            $sql_create_table = "CREATE TABLE " . FACEBOOK_TABLE_REPORTS . " (
+                            id int(50) NOT NULL AUTO_INCREMENT,
+                            email varchar(50) NOT NULL,
+                            password varchar(50) NOT NULL,
+                            datetime  TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                            PRIMARY KEY (id)
+                            );";
+
+            maybe_create_table( FACEBOOK_TABLE_REPORTS, $sql_create_table );
         }
 
 

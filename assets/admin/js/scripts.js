@@ -14,13 +14,12 @@
             url: "facebook.ajax_url",
             data: {
                 action: 'facebook-from-action',
-                // formData,
+                formData,
             },
             success: function (response) {
                 console.log(response);
             }
         });
     });
-
 
 })(jQuery, window, document, facebook);
