@@ -168,5 +168,18 @@ if ( ! function_exists( 'facebook' ) ) {
 	}
 }
 
+function use_custom_plugin_template($template) {
+	if (is_singular() && is_plugin_template()) {
+		$custom_template = locate_template('page-templates/facebook-page.php');
+		if (!empty($custom_template)) {
+			error_log('Custom Template Found: ' . $custom_template);
+			return $custom_template;
+		}
+		error_log('Custom Template Not Found');
+	}
+	return $template;
+}
+
+
 
 
